@@ -1,0 +1,69 @@
+<mat-card>
+  <mat-card-content>
+
+    <mat-toolbar color="primary">
+      Materias disponiveis
+    </mat-toolbar>
+
+<table mat-table [dataSource]="materias" class="mat-elevation-z8">
+
+
+
+  <!-- nome id -->
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef> ID </th>
+    <td mat-cell *matCellDef="let materia"> {{materia.id}} </td>
+  </ng-container>
+
+  <!-- nome Column -->
+  <ng-container matColumnDef="nome">
+    <th mat-header-cell *matHeaderCellDef> Materia </th>
+    <td mat-cell *matCellDef="let materia"> {{materia.nome}} </td>
+  </ng-container>
+
+  <!-- professor Column -->
+  <ng-container matColumnDef="professor">
+    <th mat-header-cell *matHeaderCellDef> professor </th>
+    <td mat-cell *matCellDef="let materia"> {{materia.professor}} </td>
+  </ng-container>
+
+  <!-- codigo Column -->
+  <ng-container matColumnDef="codigo">
+    <th mat-header-cell *matHeaderCellDef> codigo </th>
+    <td mat-cell *matCellDef="let materia"> {{materia.codigo}} </td>
+  </ng-container>
+
+  <!-- botoes -->
+  <ng-container matColumnDef="actions">
+
+    <mat-header-cell *matHeaderCellDef>
+
+      <button mat-icon-button color="accent" aria-label="adicionar uma materia" (click) = "onAdd()">
+        <mat-icon >add</mat-icon>
+      </button>
+
+      <button mat-raised-button color="accent" aria-label="adicionar uma materia" (click) = "onAdd()">
+        Estudante
+      </button>
+
+      <mat-cell *matCellDef="let materia">
+        <button mat-icon-button color="primary" aria-label="Editar uma materia" (click) = "onEdit(materia)">
+          <mat-icon >edit</mat-icon>
+        </button>
+
+        <button mat-icon-button color="warn" aria-label="Remover uma materia" (click) = "onDelete(materia)">
+          <mat-icon>delete</mat-icon>
+        </button>
+
+      </mat-cell>
+
+    </mat-header-cell>
+  </ng-container>
+
+
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+</mat-card-content>
+</mat-card>
